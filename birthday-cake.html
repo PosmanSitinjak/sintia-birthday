@@ -17,7 +17,7 @@
     body {
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, #e8c3f5 0%, #ffcfd2 50%, #fde2e4 100%);
+      background: radial-gradient(ellipse at top, #1a1c29 0%, #0c0d14 60%, #050608 100%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -25,6 +25,36 @@
       justify-content: center;
       font-family: 'Poppins', sans-serif;
       position: relative;
+    }
+
+    /* Subtle Gold Stars Background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(212,175,55,0.45) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 78% 15%, rgba(255,215,0,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 75%, rgba(212,175,55,0.35) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 88% 68%, rgba(255,215,0,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 85%, rgba(212,175,55,0.35) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Warm Glow behind the Cake */
+    .glow-aura {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(255, 215, 0, 0.05) 45%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(20px);
     }
 
     /* Confetti Canvas */
@@ -47,6 +77,7 @@
       height: 100%;
       position: relative;
       z-index: 10;
+      padding: 20px;
     }
 
     /* Back Button */
@@ -54,11 +85,11 @@
       position: fixed;
       top: 30px;
       left: 30px;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(212, 175, 55, 0.12);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: white;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #d4af37;
       padding: 10px 22px;
       border-radius: 50px;
       font-size: 14px;
@@ -73,8 +104,10 @@
     }
 
     .back-button:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(212, 175, 55, 0.22);
+      border-color: #ffd700;
       transform: translateX(-5px);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     }
 
     .back-icon {
@@ -88,9 +121,9 @@
     /* SVG Cake Wrapper */
     .cake-wrapper {
       position: relative;
-      width: 320px;
-      height: 320px;
-      margin-bottom: 30px;
+      width: 360px;
+      height: 350px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -101,7 +134,8 @@
       width: 100%;
       height: 100%;
       transform: scale(0);
-      animation: popCake 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+      animation: popCake 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
     }
 
     @keyframes popCake {
@@ -110,35 +144,35 @@
       }
     }
 
-    /* HTML overlay for Candle and Flame (placed at top center of cake) */
+    /* HTML overlay for Candle and Flame */
     .candle-container {
       position: absolute;
-      top: 48px; /* Positioned right on top of our new 3-tier SVG cake */
+      top: 42px;
       left: 50%;
       transform: translateX(-50%) translateY(-200px);
-      width: 8px;
-      height: 38px;
-      background: #ffffff;
-      border-radius: 3px;
+      width: 10px;
+      height: 42px;
+      background: linear-gradient(180deg, #fff9db 0%, #ffd700 70%, #d4af37 100%);
+      border-radius: 4px;
       z-index: 50;
       opacity: 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
-    /* Candle strip details */
+    /* Candle details */
     .candle-container::after, .candle-container::before {
       content: "";
       position: absolute;
       width: 100%;
-      height: 2px;
-      background: rgba(255, 0, 0, 0.45);
+      height: 3px;
+      background: rgba(170, 119, 28, 0.5);
     }
     .candle-container::after { top: 25%; }
-    .candle-container::before { top: 55%; }
+    .candle-container::before { top: 58%; }
 
-    /* Animated entry of candle once cake is built (around 6s) */
+    /* Animated entry of candle */
     .candle-container.appear {
       animation: candleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
@@ -150,20 +184,25 @@
       }
     }
 
+    /* Candle Hover interaction */
+    .candle-container.appear:hover {
+      transform: translateX(-50%) translateY(-3px) scale(1.08);
+    }
+
     /* Flicker flame */
     .fuego {
       position: absolute;
-      top: -14px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: 8px;
-      height: 16px;
+      width: 11px;
+      height: 20px;
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: radial-gradient(ellipse at 50% 80%, #fff176, #ffd740 40%, #ff6f00 80%);
-      box-shadow: 0 0 10px #ffd740, 0 0 20px #ff6f00, 0 0 30px rgba(255,120,0,0.4);
+      background: radial-gradient(ellipse at 50% 80%, #ffffff 0%, #fff2cc 30%, #ffd700 60%, #ff8f00 95%);
+      box-shadow: 0 0 15px #ffd700, 0 0 30px #ff9100, 0 0 45px rgba(255,143,0,0.6);
       transform-origin: bottom center;
       animation: flicker 0.15s ease-in-out infinite alternate;
-      display: none; /* Initially hidden until candle lands */
+      display: none;
     }
 
     .candle-container.appear .fuego {
@@ -176,46 +215,46 @@
     }
 
     @keyframes flicker {
-      0% { transform: translateX(-50%) rotate(-3deg) scaleX(0.9); }
-      100% { transform: translateX(-50%) rotate(3deg) scaleX(1.1) scaleY(1.05); }
+      0% { transform: translateX(-50%) rotate(-3deg) scaleX(0.92); }
+      100% { transform: translateX(-50%) rotate(3deg) scaleX(1.08) scaleY(1.05); }
     }
 
-    /* Glassmorphic Floating Instruction Card */
+    /* Floating Glassmorphic Instruction Card */
     .text-instruction {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(18, 20, 32, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 20px;
-      padding: 20px 24px;
+      padding: 22px 28px;
       text-align: center;
-      margin-top: 25px;
-      max-width: 340px;
+      max-width: 380px;
       width: 90%;
-      box-shadow: 0 12px 35px rgba(106, 64, 135, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.12);
       animation: floatCard 4s ease-in-out infinite alternate;
       z-index: 10;
     }
 
     @keyframes floatCard {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-8px); }
+      100% { transform: translateY(-6px); }
     }
 
     .text-instruction h1 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #6a4087, #b24caf);
+      background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa771c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
-      letter-spacing: -0.5px;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
     }
 
     .text-instruction p {
-      font-size: 0.82rem;
-      color: #5b3577;
-      font-weight: 600;
+      font-size: 0.9rem;
+      color: rgba(220, 205, 170, 0.85);
+      font-weight: 500;
       line-height: 1.5;
       opacity: 0;
       transform: translateY(10px);
@@ -229,14 +268,14 @@
 
     /* Action button at bottom */
     .btn-bottom {
-      margin-top: 30px;
-      padding: 12px 28px;
-      font-size: 0.85rem;
+      margin-top: 22px;
+      padding: 13px 32px;
+      font-size: 0.92rem;
       border-radius: 50px;
-      background: linear-gradient(135deg, #ffd6ec, #ffe5f1);
-      color: #c96b98;
+      background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #aa771c 100%);
+      color: #0c0d14;
       border: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.45);
       cursor: pointer;
       font-weight: 700;
       font-family: 'Poppins', sans-serif;
@@ -254,8 +293,8 @@
 
     .btn-bottom:hover {
       transform: scale(1.06) translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      background: white;
+      box-shadow: 0 6px 25px rgba(255, 215, 0, 0.65);
+      color: #000;
     }
 
     @media (max-width: 480px) {
@@ -264,6 +303,13 @@
         left: 20px;
         padding: 8px 18px;
         font-size: 13px;
+      }
+      .cake-wrapper {
+        width: 310px;
+        height: 310px;
+      }
+      .text-instruction {
+        padding: 18px 20px;
       }
     }
   </style>
@@ -283,44 +329,99 @@
 
   <div class="container">
     
+    <!-- Warm Aura Glow -->
+    <div class="glow-aura"></div>
+
     <div class="cake-wrapper">
-          <!-- SVG Cake Tiered -->
+      <!-- SVG Cake Tiered with Midnight Luxury Styling -->
       <svg id="cake-svg" viewBox="0 0 300 300" xml:space="preserve">
-        <!-- Cake Stand -->
-        <ellipse cx="150" cy="265" rx="120" ry="12" fill="#e2c6db" />
-        <rect x="140" y="265" width="20" height="15" fill="#cfabcb" />
-        <ellipse cx="150" cy="280" rx="55" ry="8" fill="#cfabcb" />
+        <defs>
+          <!-- Gold Stand Gradient -->
+          <linearGradient id="gold-stand" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8a5e12" />
+            <stop offset="25%" stop-color="#ffd700" />
+            <stop offset="50%" stop-color="#fff5cc" />
+            <stop offset="75%" stop-color="#d4af37" />
+            <stop offset="100%" stop-color="#7a520e" />
+          </linearGradient>
+
+          <!-- Cake Tiers: Deep Midnight Velvet -->
+          <linearGradient id="tier-dark-1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#141626" />
+            <stop offset="35%" stop-color="#2a2e47" />
+            <stop offset="70%" stop-color="#1f2238" />
+            <stop offset="100%" stop-color="#0f111e" />
+          </linearGradient>
+
+          <linearGradient id="tier-top-1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#3b4163" />
+            <stop offset="100%" stop-color="#24283f" />
+          </linearGradient>
+
+          <!-- Molten Gold Glaze -->
+          <linearGradient id="gold-drip" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff8db" />
+            <stop offset="30%" stop-color="#ffd700" />
+            <stop offset="70%" stop-color="#d4af37" />
+            <stop offset="100%" stop-color="#996a14" />
+          </linearGradient>
+
+          <!-- Gold Pearl / Sprinkle -->
+          <radialGradient id="gold-pearl" cx="35%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="45%" stop-color="#ffd700" />
+            <stop offset="100%" stop-color="#996a14" />
+          </radialGradient>
+        </defs>
+
+        <!-- Cake Stand Pedestal -->
+        <ellipse cx="150" cy="278" rx="60" ry="8" fill="url(#gold-stand)" opacity="0.9" />
+        <rect x="142" y="260" width="16" height="19" fill="url(#gold-stand)" />
+        <ellipse cx="150" cy="260" rx="122" ry="14" fill="url(#gold-stand)" />
+        <ellipse cx="150" cy="258" rx="116" ry="11" fill="#1b1c2b" opacity="0.7" />
 
         <!-- Bottom Tier (Layer 1) -->
-        <path d="M 50 205 A 100 15 0 0 0 250 205 L 250 255 A 100 15 0 0 1 50 255 Z" fill="#e8c3f5" />
-        <ellipse cx="150" cy="205" rx="100" ry="15" fill="#f3d8f8" />
+        <path d="M 50 195 A 100 16 0 0 0 250 195 L 250 250 A 100 16 0 0 1 50 250 Z" fill="url(#tier-dark-1)" />
+        <ellipse cx="150" cy="195" rx="100" ry="16" fill="url(#tier-top-1)" />
         
-        <!-- Drips on Bottom Tier -->
-        <path d="M 50 205 Q 70 220 90 205 Q 110 220 130 205 Q 150 220 170 205 Q 190 220 210 205 Q 230 220 250 205 L 250 215 Q 230 230 210 215 Q 190 230 170 215 Q 150 230 130 215 Q 110 230 90 215 Q 70 230 50 215 Z" fill="#ffffff" opacity="0.65" />
+        <!-- Molten Gold Drips on Bottom Tier -->
+        <path d="M 50 195 Q 70 216 90 195 Q 110 218 130 195 Q 150 220 170 195 Q 190 216 210 195 Q 230 218 250 195 L 250 206 Q 230 228 210 206 Q 190 228 170 206 Q 150 230 130 206 Q 110 228 90 206 Q 70 228 50 206 Z" fill="url(#gold-drip)" />
 
         <!-- Middle Tier (Layer 2) -->
-        <path d="M 75 142 A 75 12 0 0 0 225 142 L 225 205 A 75 12 0 0 1 75 205 Z" fill="#ffcfd2" />
-        <ellipse cx="150" cy="142" rx="75" ry="12" fill="#ffe5e7" />
+        <path d="M 75 135 A 75 13 0 0 0 225 135 L 225 195 A 75 13 0 0 1 75 195 Z" fill="url(#tier-dark-1)" />
+        <ellipse cx="150" cy="135" rx="75" ry="13" fill="url(#tier-top-1)" />
         
-        <!-- Drips on Middle Tier -->
-        <path d="M 75 142 Q 95 154 115 142 Q 135 154 155 142 Q 175 154 195 142 Q 215 154 225 142 L 225 150 Q 215 162 195 150 Q 175 162 155 150 Q 135 162 115 150 Q 95 162 75 150 Z" fill="#ffffff" opacity="0.65" />
+        <!-- Molten Gold Drips on Middle Tier -->
+        <path d="M 75 135 Q 95 152 115 135 Q 135 154 155 135 Q 175 152 195 135 Q 215 152 225 135 L 225 144 Q 215 162 195 144 Q 175 162 155 144 Q 135 164 115 144 Q 95 162 75 144 Z" fill="url(#gold-drip)" />
 
         <!-- Top Tier (Layer 3) -->
-        <path d="M 100 85 A 50 8 0 0 0 200 85 L 200 142 A 50 8 0 0 1 100 142 Z" fill="#fde2e4" />
-        <ellipse cx="150" cy="85" rx="50" ry="8" fill="#fff3f4" />
+        <path d="M 100 80 A 50 9 0 0 0 200 80 L 200 135 A 50 9 0 0 1 100 135 Z" fill="url(#tier-dark-1)" />
+        <ellipse cx="150" cy="80" rx="50" ry="9" fill="url(#tier-top-1)" />
         
-        <!-- Cream Drips on Top Tier -->
-        <path d="M 100 85 Q 115 95 130 85 Q 145 95 160 85 Q 175 95 190 85 Q 200 85 200 85 L 200 95 Q 190 105 175 95 Q 160 105 145 95 Q 130 105 115 95 Q 100 105 100 95 Z" fill="#ffffff" />
+        <!-- Molten Gold Drips on Top Tier -->
+        <path d="M 100 80 Q 115 94 130 80 Q 145 96 160 80 Q 175 94 190 80 Q 200 80 200 80 L 200 89 Q 190 102 175 89 Q 160 105 145 89 Q 130 102 115 89 Q 100 102 100 89 Z" fill="url(#gold-drip)" />
+
+        <!-- Gold Pearls & Sprinkles (Bottom Tier) -->
+        <circle cx="85" cy="235" r="3.5" fill="url(#gold-pearl)" />
+        <circle cx="115" cy="242" r="3" fill="#ffffff" opacity="0.8" />
+        <circle cx="150" cy="246" r="3.5" fill="url(#gold-pearl)" />
+        <circle cx="185" cy="243" r="3" fill="#ffffff" opacity="0.8" />
+        <circle cx="215" cy="236" r="3.5" fill="url(#gold-pearl)" />
         
-        <!-- Sprinkles & Details -->
-        <circle cx="90" cy="235" r="3" fill="#ffcfd2" />
-        <circle cx="130" cy="245" r="3" fill="#fff" />
-        <circle cx="170" cy="240" r="3" fill="#e8c3f5" />
-        <circle cx="210" cy="247" r="3" fill="#ffcfd2" />
-        
-        <circle cx="110" cy="172" r="2.5" fill="#e8c3f5" />
-        <circle cx="150" cy="177" r="2.5" fill="#fff" />
-        <circle cx="190" cy="170" r="2.5" fill="#fde2e4" />
+        <!-- Gold Pearls & Sprinkles (Middle Tier) -->
+        <circle cx="105" cy="175" r="3" fill="url(#gold-pearl)" />
+        <circle cx="130" cy="182" r="2.5" fill="#ffffff" opacity="0.9" />
+        <circle cx="150" cy="180" r="3" fill="url(#gold-pearl)" />
+        <circle cx="170" cy="182" r="2.5" fill="#ffffff" opacity="0.9" />
+        <circle cx="195" cy="176" r="3" fill="url(#gold-pearl)" />
+
+        <!-- Gold Pearls (Top Tier) -->
+        <circle cx="125" cy="118" r="2.5" fill="url(#gold-pearl)" />
+        <circle cx="150" cy="122" r="3" fill="url(#gold-pearl)" />
+        <circle cx="175" cy="118" r="2.5" fill="url(#gold-pearl)" />
+
+        <!-- Subtle "20" badge on center of middle tier -->
+        <text x="150" y="166" font-family="'Poppins', sans-serif" font-weight="700" font-size="13" fill="#ffd700" text-anchor="middle" letter-spacing="2">20</text>
       </svg>
       
       <!-- Candle and Flame container -->
@@ -331,12 +432,12 @@
     </div>
 
     <div class="text-instruction" id="instructions">
-      <h1>Happy Birthday Cery!</h1>
-      <p id="instruction-p">Kue ulang tahunmu sedang dibuat... Mohon tunggu sebentar ya ✨</p>
+      <h1>Happy Birthday Sintia!</h1>
+      <p id="instruction-p">Kue ulang tahunmu sedang dibuat... Mohon tunggu sebentar ya.</p>
     </div>
 
     <button class="btn-bottom" id="btnNext" onclick="window.location.href='utama.html'">
-      Click untuk melihat sesuatu ➔
+      Lanjut ke Halaman Utama ➔
     </button>
   </div>
 
@@ -434,7 +535,7 @@
       canvas.height = window.innerHeight;
 
       const pieces = [];
-      const colors = ['#ffd6ec', '#ffe5f1', '#e3f6f5', '#fff3b0', '#e5ccff', '#c77da5', '#926ca8'];
+      const colors = ['#ffd700', '#d4af37', '#fff2cc', '#ffffff', '#e5c07b', '#f3e5ab', '#aa771c'];
 
       for (let i = 0; i < 180; i++) {
         pieces.push({

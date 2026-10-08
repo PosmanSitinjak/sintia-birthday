@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cery's Birthday Game 🎮</title>
+  <title>Sintia's Birthday Game 🎮</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --pink: #fde2e4;
-      --text: #6a4087;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,8 +16,8 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--pink);
-      color: var(--text);
+      background: radial-gradient(ellipse at top, #1a1c29 0%, #0c0d14 60%, #050608 100%);
+      color: rgba(220, 205, 170, 0.88);
       overflow: hidden;
       width: 100vw;
       height: 100vh;
@@ -34,11 +29,11 @@
       position: fixed;
       top: 20px;
       left: 20px;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(212, 175, 55, 0.12);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      color: var(--text);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #d4af37;
       padding: 8px 18px;
       border-radius: 50px;
       font-size: 13px;
@@ -49,11 +44,13 @@
       gap: 6px;
       z-index: 1000;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     .back-button:hover {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(212, 175, 55, 0.22);
       transform: translateX(-3px);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
     }
 
     .back-icon {
@@ -74,27 +71,30 @@
       font-size: 1.1rem;
       font-weight: 700;
       z-index: 100;
-      background: rgba(255,255,255,0.6);
+      background: rgba(18, 20, 34, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 10px 20px;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      border: 1.5px solid white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.08);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #ffd700;
     }
 
     #game-canvas {
       display: block;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, #fde2e4 0%, #e8c3f5 100%);
+      background: radial-gradient(ellipse at top, #1a1c29 0%, #0c0d14 60%, #050608 100%);
     }
 
     /* Game success modal */
     #success-modal {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(106, 64, 135, 0.75);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(5, 6, 8, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -110,14 +110,14 @@
     }
 
     .success-card {
-      background: white;
+      background: linear-gradient(145deg, #181a2b 0%, #10121f 100%);
       border-radius: 24px;
       padding: 40px 30px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 35px rgba(212,175,55,0.15);
       max-width: 380px;
       width: 90%;
-      border: 4px solid #fde2e4;
+      border: 1px solid rgba(212, 175, 55, 0.3);
       transform: scale(0.85);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -130,37 +130,41 @@
       font-size: 4rem;
       margin-bottom: 15px;
       animation: bounce 2s infinite ease-in-out;
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
     }
 
     .success-card h2 {
       font-size: 1.7rem;
       margin-bottom: 10px;
-      color: #8c5b9f;
+      background: linear-gradient(135deg, #fff2cc 0%, #d4af37 60%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .success-card p {
       font-size: 0.9rem;
       line-height: 1.5;
-      color: #666;
+      color: rgba(212, 175, 55, 0.7);
       margin-bottom: 25px;
     }
 
     .success-btn {
-      background: linear-gradient(135deg, #ffcfd2, #e8c3f5);
-      color: white;
+      background: linear-gradient(135deg, #ffd700 0%, #d4af37 60%, #aa771c 100%);
+      color: #0c0d14;
       font-weight: 700;
       border: none;
       padding: 10px 24px;
       border-radius: 50px;
       font-size: 0.9rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(140, 91, 159, 0.35);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
       transition: all 0.3s;
     }
 
     .success-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(201, 107, 152, 0.5);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55);
     }
 
     @keyframes bounce {
@@ -181,7 +185,7 @@
 
   <!-- HUD overlay -->
   <div id="hud">
-    <div>Skor: <span id="score-val">0</span>/18</div>
+    <div>Skor: <span id="score-val">0</span>/20</div>
     <div id="hearts-container">❤️❤️❤️</div>
   </div>
 
@@ -296,7 +300,7 @@
 
     // Mode 2: Balloon Variables
     let balloons = [];
-    const balloonColors = ["#ffd6ec", "#ffe5f1", "#e3f6f5", "#fff3b0", "#e5ccff", "#c77da5", "#926ca8"];
+    const balloonColors = ["#ffd700", "#d4af37", "#f3e5ab", "#e5c158", "#ffffff", "#c5a059", "#aa771c"];
 
     // Tapping/clicking balloons
     canvas.addEventListener("mousedown", (e) => {
@@ -322,7 +326,7 @@
           audio.playPop();
           spawnPopSparks(x, y);
           
-          if (score >= 18) {
+          if (score >= 20) {
             triggerWin();
           }
           break;
@@ -351,10 +355,10 @@
       
       // Setup Win Modal Info
       document.getElementById("success-emoji").textContent = isBalloonMode ? "🎈" : "🎂";
-      document.getElementById("success-title").textContent = "Selamat, Cery! 🎉";
+      document.getElementById("success-title").textContent = "Selamat, Sintia! 🎉";
       document.getElementById("success-desc").textContent = isBalloonMode 
-        ? "Kamu berhasil memecahkan 18 balon keberuntungan! Semoga segala harapan dan impianmu membumbung tinggi!" 
-        : "Kamu berhasil menangkap 18 irisan kue manis untuk pesta ulang tahunmu! Semoga hari-harimu selalu manis dan ceria!";
+        ? "Berhasil pecahin semua balonnya! You nailed it, Sin! 🎈" 
+        : "Berhasil nangkep semua potongan kue! Mantap banget, Sin! 🍰";
       
       document.getElementById("success-modal").classList.add("active");
 
@@ -427,14 +431,18 @@
         if (rightPressed && basket.x < canvas.width - basket.width) basket.x += basket.speed;
 
         // Draw Basket plate
-        ctx.fillStyle = "#c96b98";
+        const grad = ctx.createLinearGradient(basket.x, basket.y, basket.x + basket.width, basket.y);
+        grad.addColorStop(0, "#aa771c");
+        grad.addColorStop(0.5, "#ffd700");
+        grad.addColorStop(1, "#aa771c");
+        ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.roundRect(basket.x, basket.y, basket.width, basket.height, 8);
         ctx.fill();
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "14px Poppins";
+        ctx.fillStyle = "#0c0d14";
+        ctx.font = "bold 13px Poppins";
         ctx.textAlign = "center";
-        ctx.fillText("PIRING KUE 🍽️", basket.x + basket.width / 2, basket.y + 17);
+        ctx.fillText("PIRING EMAS 🍽️", basket.x + basket.width / 2, basket.y + 17);
       }
 
       // 2. Draw and update falling items (Catcher Mode only)
@@ -462,7 +470,7 @@
               score++;
               audio.playHit();
               document.getElementById("score-val").textContent = score;
-              if (score >= 18) triggerWin();
+              if (score >= 20) triggerWin();
             }
           }
 

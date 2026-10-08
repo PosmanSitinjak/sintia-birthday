@@ -20,25 +20,26 @@
       width: 100vw;
       height: 100vh;
       position: fixed;
-      background: linear-gradient(135deg, #e8c3f5 0%, #ffcfd2 50%, #fde2e4 100%);
+      background: radial-gradient(ellipse at top, #1a1c29 0%, #0c0d14 60%, #050608 100%);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Ambient animated bubbles */
+    /* Ambient animated gold stars/bubbles */
     .bubble {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(212, 175, 55, 0.05) 70%, transparent 100%);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
       animation: float 12s infinite ease-in-out;
       pointer-events: none;
       z-index: 0;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
-      50% { transform: translateY(-80px) translateX(30px) scale(1.15); opacity: 0.8; }
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-80px) translateX(30px) scale(1.2); opacity: 0.8; }
     }
 
     #pw-gate {
@@ -53,19 +54,19 @@
     }
 
     .login-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(18, 20, 32, 0.78);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
       padding: 35px 25px;
       border-radius: 30px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.12);
       width: 100%;
       max-width: 380px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       animation: cardFadeIn 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     }
 
@@ -78,12 +79,15 @@
       margin-bottom: 8px;
       font-size: 1.8rem;
       font-weight: 700;
-      color: #8c5b9f;
+      background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     .login-card p {
-      color: #8c5b9f;
+      color: #c5a880;
       font-size: 0.85rem;
       line-height: 1.5;
       margin-bottom: 20px;
@@ -101,16 +105,16 @@
       width: 15px;
       height: 15px;
       border-radius: 50%;
-      background: rgba(178, 102, 255, 0.15);
-      border: 2px solid rgba(178, 102, 255, 0.4);
+      background: rgba(212, 175, 55, 0.12);
+      border: 2px solid rgba(212, 175, 55, 0.4);
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .dot.active {
-      background: #8c5b9f;
-      border-color: #8c5b9f;
-      transform: scale(1.2);
-      box-shadow: 0 0 8px rgba(199, 125, 165, 0.5);
+      background: #ffd700;
+      border-color: #fff2cc;
+      transform: scale(1.25);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     }
 
     #pin-keypad {
@@ -124,17 +128,17 @@
     }
 
     .pin-btn {
-      background: rgba(255, 255, 255, 0.65);
-      color: #8c5b9f;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.05);
+      color: #f7eed8;
+      border: 1px solid rgba(212, 175, 55, 0.25);
       border-radius: 50%;
       width: 68px;
       height: 68px;
       font-size: 1.4rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -144,17 +148,19 @@
     }
 
     .pin-btn:active, .pin-btn.clicked {
-      background: #ffcfd2 !important;
-      color: #8c5b9f !important;
-      transform: scale(0.9);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, #ffd700, #d4af37) !important;
+      color: #0b0c10 !important;
+      transform: scale(0.92);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
     }
 
     @media (min-width: 1025px) {
       .pin-btn:hover {
-        background: #f7edff;
-        transform: scale(1.06);
-        border-color: #e0c9ff;
+        background: rgba(212, 175, 55, 0.18);
+        transform: scale(1.08);
+        border-color: #ffd700;
+        color: #ffd700;
+        box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
       }
     }
 
@@ -194,7 +200,7 @@
     <div class="login-card">
       <h2>Birthday Access</h2>
       <p>Masukkan PIN untuk membuka kejutan spesial. <br>
-      <span style="font-size: 0.78rem; font-style: italic; color: #a87ebb;">(Petunjuk: Tanggal lahir Cery DDMMYY)</span></p>
+      <span style="font-size: 0.78rem; font-style: italic; color: #d4af37;">(Petunjuk: Tanggal lahir Sintia DDMMYY)</span></p>
 
       <div id="pin-display">
         <div class="dot"></div>
@@ -225,7 +231,7 @@
   </div>
 
   <script>
-    const PASSWORD = "020708"; // Tanggal lahir Cery: 02 Juli 2008
+    const PASSWORD = "081006"; // Tanggal lahir Sintia: 08 Oktober 2006
     let inputPIN = "";
     const dots = document.querySelectorAll(".dot");
     const msg = document.getElementById("pw-msg");

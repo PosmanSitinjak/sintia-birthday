@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Girl Cery! 💖</title>
+  <title>Birthday Girl Sintia!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Georgia&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e8c3f5 0%, #ffcfd2 50%, #fde2e4 100%);
+      background: radial-gradient(ellipse at top, #1a1c29 0%, #0c0d14 60%, #050608 100%);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -29,9 +29,9 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-      background-size: 5px 5px;
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.06) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.06) 1px, transparent 1px);
+      background-size: 8px 8px;
       pointer-events: none;
       z-index: 1;
     }
@@ -49,11 +49,11 @@
       position: fixed;
       top: 30px;
       left: 30px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      color: #6a4087;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #ffd700;
       padding: 10px 22px;
       border-radius: 50px;
       font-size: 14px;
@@ -65,12 +65,14 @@
       transition: all 0.3s ease;
       z-index: 1000;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(106, 64, 135, 0.12);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
     .back-button:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(212, 175, 55, 0.18);
+      border-color: #ffd700;
       transform: translateX(-5px);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     }
 
     .back-icon {
@@ -95,7 +97,7 @@
       content: '';
       position: absolute;
       width: 4px;
-      background: linear-gradient(to bottom, #ffd6ec, #c96b98);
+      background: linear-gradient(to bottom, #ffd700, #aa771c);
       height: 100px;
     }
 
@@ -115,9 +117,9 @@
       left: 25px;
       width: 35px;
       height: 35px;
-      background: linear-gradient(135deg, #ffcfd2, #e8c3f5);
+      background: linear-gradient(135deg, #ffd700, #d4af37);
       clip-path: polygon(50% 0%, 0% 50%, 50% 100%, 100% 50%);
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
 
     /* Birthday Girl Tag */
@@ -125,49 +127,56 @@
       position: absolute;
       top: 30px;
       right: 40px;
-      background: linear-gradient(135deg, #fffefe 0%, #fde2e4 100%);
+      background: linear-gradient(135deg, #1c1e2e, #131420);
       padding: 8px 25px;
       transform: rotate(3deg);
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
       font-family: 'Georgia', serif;
-      color: #8c5b9f;
+      color: #ffd700;
       font-size: clamp(14px, 4vw, 20px);
       font-weight: bold;
       letter-spacing: 2px;
-      border: 2px solid #fff;
+      border: 1px solid rgba(212, 175, 55, 0.5);
       z-index: 11;
+      border-radius: 4px;
     }
 
     /* Calendar Section */
     .calendar-section {
-      background: white;
+      background: rgba(18, 20, 32, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 30px;
-      border-radius: 15px;
+      border-radius: 20px;
       margin: 120px 20px 30px;
-      box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.1);
       transform: rotate(-1deg);
       position: relative;
     }
 
     .paint-header {
-      background: linear-gradient(135deg, #fde2e4 0%, #e8c3f5 100%);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(212, 175, 55, 0.3);
       padding: 14px 20px;
       border-radius: 50px;
       text-align: center;
       margin-bottom: 25px;
-      box-shadow: 2px 2px 8px rgba(106, 64, 135, 0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .paint-header h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 38px;
-      color: #333;
+      background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin: 0;
     }
 
     .paint-header p {
       font-size: 20px;
-      color: #666;
+      color: #c5a880;
       font-weight: 600;
       margin-top: 2px;
     }
@@ -182,7 +191,7 @@
       gap: 10px;
       margin-bottom: 10px;
       font-weight: bold;
-      color: #666;
+      color: #ffd700;
       text-align: center;
     }
 
@@ -198,39 +207,42 @@
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      color: #999;
+      color: rgba(255, 255, 255, 0.25);
       border-radius: 50%;
       position: relative;
     }
 
     .day.current-month {
-      color: #333;
+      color: #e5c07b;
+      font-weight: 500;
     }
 
     .day.circled {
-      color: #fff;
+      color: #0c0d14;
       font-weight: bold;
-      background: #8c5b9f;
-      box-shadow: 0 0 10px rgba(140, 91, 159, 0.5);
-      border: 2.5px solid #ffffff;
-      outline: 2px solid #8c5b9f;
+      background: linear-gradient(135deg, #ffd700, #d4af37);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      border: 2px solid #fffdf5;
+      outline: 2px solid #ffd700;
     }
 
     /* Photo Overlapping Calendar */
     .photo-frame {
       width: 115px;
       height: 145px;
-      background: white;
-      padding: 8px;
-      box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.25);
+      background: #1c1e2e;
+      padding: 6px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
       position: absolute;
-      border: 3.5px solid #fff;
+      border: 2px solid rgba(212, 175, 55, 0.5);
+      border-radius: 8px;
     }
 
     .photo-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 4px;
     }
 
     .frame-top {
@@ -244,13 +256,12 @@
       position: absolute;
       bottom: -15px;
       right: -10px;
-      color: #8c5b9f;
+      color: #ffd700;
       font-size: 2.8rem;
       font-weight: 900;
       text-shadow:
-        2px 2px 8px #8c5b9f,
-        -2px -2px 8px rgba(255, 255, 255, 0.8),
-        0 0 10px #8c5b9f;
+        0 0 15px rgba(255, 215, 0, 0.8),
+        2px 2px 4px #000;
       pointer-events: none;
       z-index: 10;
       font-family: 'Georgia', serif;
@@ -258,16 +269,19 @@
 
     /* Quote Box */
     .quote-box {
-      background: linear-gradient(135deg, #fde2e4, #e8c3f5);
-      padding: 18px;
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 16px 24px;
       border-radius: 12px;
       text-align: center;
       font-style: italic;
-      color: #5a3a4d;
-      box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
-      margin: 20px 0;
+      color: #e5c07b;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+      margin: 22px auto 10px;
       font-weight: 500;
       font-size: 0.95rem;
+      line-height: 1.6;
+      text-wrap: balance;
     }
 
     /* Scrapbook Items Grid */
@@ -281,10 +295,11 @@
 
     .scrap-item {
       position: relative;
-      background: white;
+      background: rgba(18, 20, 32, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.25);
       padding: 12px;
-      border-radius: 10px;
-      box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.18);
+      border-radius: 14px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
 
     .scrap-photo {
@@ -292,7 +307,7 @@
       height: 200px;
       border-radius: 8px;
       overflow: hidden;
-      background: #fafafa;
+      background: #111;
     }
 
     .scrap-photo img {
@@ -303,25 +318,25 @@
 
     .sticker {
       position: absolute;
-      background: linear-gradient(135deg, #ffcfd2, #e8c3f5);
+      background: linear-gradient(135deg, #ffd700, #d4af37);
       padding: 6px 14px;
       border-radius: 20px;
-      color: white;
+      color: #0c0d14;
       font-size: 12px;
-      font-weight: 600;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .text-sticker {
       display: inline-block;
-      background: linear-gradient(135deg, #ffcfd2, #8c5b9f);
+      background: linear-gradient(135deg, #ffd700, #aa771c);
       padding: 6px 14px;
       margin: 4px;
-      color: #fff;
+      color: #0c0d14;
       font-weight: bold;
       border-radius: 4px;
       font-size: 13px;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       font-family: 'Dancing Script', cursive;
     }
 
@@ -341,21 +356,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 44px;
+      height: 46px;
       text-decoration: none;
-      padding: 0 20px;
+      padding: 0 22px;
       font-size: 0.9rem;
       border-radius: 12px;
-      background: linear-gradient(135deg, #ffcfd2, #e8c3f5);
-      color: #6a4087;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #ffd700;
       font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .button-container a:hover {
       transform: scale(1.06) translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(135deg, #ffd700, #d4af37);
+      color: #0c0d14;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
     /* Floating Draggable Game Icon */
@@ -366,10 +384,10 @@
       width: 75px;
       height: 75px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.22);
+      background: rgba(18, 20, 32, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.3);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -377,7 +395,7 @@
       z-index: 9999;
       user-select: none;
       touch-action: none;
-      border: 2px solid white;
+      border: 2px solid rgba(212, 175, 55, 0.5);
     }
 
     .game-icon:active {
@@ -391,20 +409,21 @@
 
     /* Simple Footer Card */
     .card-footer {
-      background: linear-gradient(135deg, #ffcfd2, #e8c3f5);
+      background: linear-gradient(135deg, #1c1e2e, #131420);
       padding: 25px;
-      border-radius: 15px;
+      border-radius: 20px;
       text-align: center;
       margin: 40px 20px 20px;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
       transform: rotate(1deg);
-      border: 3px solid #fff;
+      border: 1px solid rgba(212, 175, 55, 0.35);
     }
 
     .card-footer h2 {
-      color: white;
       font-size: 28px;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-family: 'Dancing Script', cursive;
     }
 
@@ -463,12 +482,12 @@
       
       <!-- Polaroid overlapping calendar -->
       <div class="photo-frame frame-top">
-        <img src="assets/photo2.png" alt="Cery Photo">
-        <span class="overlay-number">18</span>
+        <img src="assets/photo5.png" alt="Sintia Photo">
+        <span class="overlay-number">20</span>
       </div>
 
       <div class="paint-header">
-        <h1>Juli</h1>
+        <h1>Oktober</h1>
         <p>2026</p>
       </div>
 
@@ -484,17 +503,18 @@
         </div>
         
         <div class="calendar-days">
-          <!-- July 2026 starts on Wednesday (Rabu), so we place 2 empty placeholders for Monday, Tuesday -->
+          <!-- October 2026 starts on Thursday (Kamis), so we place 3 empty placeholders for Monday, Tuesday, Wednesday -->
+          <div class="day"></div>
           <div class="day"></div>
           <div class="day"></div>
           <div class="day current-month">1</div>
-          <div class="day current-month circled">2</div>
+          <div class="day current-month">2</div>
           <div class="day current-month">3</div>
           <div class="day current-month">4</div>
           <div class="day current-month">5</div>
           <div class="day current-month">6</div>
           <div class="day current-month">7</div>
-          <div class="day current-month">8</div>
+          <div class="day current-month circled">8</div>
           <div class="day current-month">9</div>
           <div class="day current-month">10</div>
           <div class="day current-month">11</div>
@@ -522,7 +542,7 @@
       </div>
 
       <div class="quote-box">
-        <p>"Di usiamu yang ke-18 ini, semoga dunia berpihak padamu dan setiap impianmu menemukan jalannya untuk terwujud." ✨</p>
+        <p>"Wishing you a year filled with happiness, peace, and all the good things in life."</p>
       </div>
     </div>
 
@@ -531,7 +551,7 @@
       <!-- Item 1: Polaroid with sticker -->
       <div class="scrap-item" style="transform: rotate(-2deg);">
         <div class="scrap-photo">
-          <img src="assets/photo3.png" alt="Kenangan 1">
+          <img src="assets/photo2.png" alt="Sintia Kenangan 1">
         </div>
         <div class="sticker" style="top: -10px; left: -10px;">Sweet Memories 💖</div>
       </div>
@@ -539,7 +559,7 @@
       <!-- Item 2: Polaroid with tape/text stickers -->
       <div class="scrap-item" style="transform: rotate(3deg);">
         <div class="scrap-photo">
-          <img src="assets/photo4.png" alt="Kenangan 2">
+          <img src="assets/photo6.png" alt="Sintia Kenangan 2">
         </div>
         <div style="margin-top: 10px; text-align: center;">
           <div class="text-sticker">Grow up</div>
@@ -558,7 +578,7 @@
 
     <!-- Outro card -->
     <div class="card-footer">
-      <h2>Happy 18th Birthday, Cery! ❤️</h2>
+      <h2>Happy 20th Birthday, Sintia!</h2>
     </div>
 
   </div>
