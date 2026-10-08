@@ -376,37 +376,6 @@
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
-    /* Floating Draggable Game Icon */
-    .game-icon {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 75px;
-      height: 75px;
-      border-radius: 50%;
-      background: rgba(18, 20, 32, 0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: grab;
-      z-index: 9999;
-      user-select: none;
-      touch-action: none;
-      border: 2px solid rgba(212, 175, 55, 0.5);
-    }
-
-    .game-icon:active {
-      cursor: grabbing;
-    }
-
-    .game-icon span {
-      font-size: 2.3rem;
-      pointer-events: none;
-    }
-
     /* Simple Footer Card */
     .card-footer {
       background: linear-gradient(135deg, #1c1e2e, #131420);
@@ -449,11 +418,6 @@
       .overlay-number {
         font-size: 2.2rem;
       }
-      .game-icon {
-        width: 65px;
-        height: 65px;
-      }
-      .game-icon span { font-size: 2rem; }
     }
   </style>
 </head>
@@ -583,77 +547,5 @@
 
   </div>
 
-  <!-- Draggable Floating Game Icon -->
-  <div class="game-icon" id="gameIcon" title="Main game!">
-    <span>🎮</span>
-  </div>
-
-  <script>
-    // Draggable Game Icon Script
-    const icon = document.getElementById("gameIcon");
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    icon.addEventListener("mousedown", startDrag);
-    icon.addEventListener("touchstart", startDrag, { passive: true });
-
-    function startDrag(e) {
-      isDragging = false;
-      const rect = icon.getBoundingClientRect();
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-
-      offsetX = clientX - rect.left;
-      offsetY = clientY - rect.top;
-
-      // Listeners for move & stop
-      document.addEventListener("mousemove", onDrag);
-      document.addEventListener("mouseup", stopDrag);
-      document.addEventListener("touchmove", onDrag, { passive: false });
-      document.addEventListener("touchend", stopDrag);
-    }
-
-    function onDrag(e) {
-      isDragging = true; // Drag has started
-      
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-
-      let x = clientX - offsetX;
-      let y = clientY - offsetY;
-
-      // Keep inside window bounds
-      const maxX = window.innerWidth - icon.offsetWidth;
-      const maxY = window.innerHeight - icon.offsetHeight;
-      x = Math.max(0, Math.min(x, maxX));
-      y = Math.max(0, Math.min(y, maxY));
-
-      icon.style.left = `${x}px`;
-      icon.style.top = `${y}px`;
-      icon.style.right = "auto";
-      icon.style.bottom = "auto";
-    }
-
-    function stopDrag() {
-      document.removeEventListener("mousemove", onDrag);
-      document.removeEventListener("mouseup", stopDrag);
-      document.removeEventListener("touchmove", onDrag);
-      document.removeEventListener("touchend", stopDrag);
-    }
-
-    // Handle click redirect (distinguish between click and drag drag)
-    icon.addEventListener("click", (e) => {
-      if (!isDragging) {
-        window.location.href = "plate-game.html";
-      }
-    });
-
-    // For touch devices tap handler
-    icon.addEventListener("touchend", (e) => {
-      if (!isDragging) {
-        window.location.href = "plate-game.html";
-      }
-    });
-  </script>
 </body>
 </html>
